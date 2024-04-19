@@ -9,8 +9,9 @@ export default function Login() {
 
     return (
         <Section className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <Typography tag="h1">FitTrackr</Typography>
             <Card>
-                <Typography tag="h1" isCentered={true}>Se connecter</Typography>
+                <Typography tag="h2">Se connecter</Typography>
                 <LoginForm />
             </Card>
         </Section>
