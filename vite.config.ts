@@ -6,14 +6,17 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({ 
-      registerType: "autoUpdate",
+    VitePWA({
+      registerType: "prompt",
       devOptions: {
         enabled: true
       },
+      includeAssets: [],
       manifest: {
         name: 'FitTrackr',
-        theme_color: "#fffff"
+        short_name: 'FitTrackr',
+        description: 'An app to keep track of your sporting progress',
+        theme_color: "#ffffff",
       }
     })
   ],
