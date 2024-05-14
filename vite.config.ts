@@ -6,11 +6,12 @@ import { VitePWA } from 'vite-plugin-pwa'
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({ 
-      registerType: "autoUpdate",
+    VitePWA({
+      registerType: "prompt",
       devOptions: {
         enabled: true
       },
+      includeAssets: [],
       manifest: {
         name: 'FitTrackr',
         theme_color: "#ffffff"
