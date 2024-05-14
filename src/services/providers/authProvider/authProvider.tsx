@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { ReactNode, createContext, useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
-import { DecodedToken } from "./types/user.interface";
+import { User } from "./types/user.interface";
 import { AuthContextProps, AuthState } from "./types/auth.interface";
 
 interface Props {
@@ -22,13 +22,13 @@ export const AuthProvider = ({ children }: Props) => {
     const login = (token: string) => {
         localStorage.setItem('FitTrackrToken', token);
 
-        const decodedToken = jwtDecode<DecodedToken>(token);
+        const decodedToken = jwtDecode<User>(token);
 
         if (Date.now() >= decodedToken.exp * 1000) return logout();
 
         setAuth({
             isConnected: true,
-            user: decodedToken.user
+            user: decodedToken
         })
 
         if (location.pathname === "/login") {
