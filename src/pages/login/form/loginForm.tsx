@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form"
 import Input from "../../../components/form/input";
 import Submit from "../../../components/form/submit";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { auth } from "../../../services/api/auth";
+import { useContext } from "react";
+import { authContext } from "../../../services/providers/authProvider/authProvider";
 
 export interface LoginInputs {
     email: string
@@ -16,12 +18,12 @@ export default function LoginForm() {
             password: 'test'
         }
     });
-    const queryClient = useQueryClient();
+    const { login } = useContext(authContext);
 
     const mutation = useMutation({
         mutationFn: (inputs: LoginInputs) => auth(inputs),
-        onSuccess: (data) => {
-            console.log(data);
+        onSuccess: (token) => {
+            login(token);
         },
         onError: (data) => {
             console.error(data);
