@@ -1,18 +1,34 @@
 import { useForm } from "react-hook-form"
 import Input from "../../../components/form/input";
 import Submit from "../../../components/form/submit";
+import { useMutation, useQueryClient } from "react-query";
+import { auth } from "../../../services/api/auth";
 
-interface LoginInputs {
+export interface LoginInputs {
     email: string
     password: string
 }
 
 export default function LoginForm() {
-    const { handleSubmit, control, formState: { errors } } = useForm<LoginInputs>();
+    const { handleSubmit, control, formState: { errors } } = useForm<LoginInputs>({
+        defaultValues: {
+            email: 'admin@mon-organisation.fr',
+            password: 'test'
+        }
+    });
+    const queryClient = useQueryClient();
 
-    const onSubmit = (data: LoginInputs) => {
-        console.log(data);
-    }
+    const mutation = useMutation({
+        mutationFn: (inputs: LoginInputs) => auth(inputs),
+        onSuccess: (data) => {
+            console.log(data);
+        },
+        onError: (data) => {
+            console.error(data);
+        }
+    });
+
+    const onSubmit = (inputs: LoginInputs) => mutation.mutate(inputs)
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -24,7 +40,7 @@ export default function LoginForm() {
                 label="Email"
                 rules={{ required: true }}
             />
-            <Input 
+            <Input
                 control={control}
                 type="password"
                 name="password"

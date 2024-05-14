@@ -13,7 +13,7 @@ export default defineConfig({
       },
       manifest: {
         name: 'FitTrackr',
-        theme_color: "#fffff"
+        theme_color: "#ffffff"
       }
     })
   ],

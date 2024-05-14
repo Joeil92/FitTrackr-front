@@ -29,10 +29,10 @@ export default function Input({ control, name, label, type = 'text', placeholder
                         {...field}
                         type={type}
                         placeholder={placeholder}
-                        className="appearance-none block w-full border rounded-lg py-2 px-2 leading-tight focus:border-blue-500 focus:ring-blue-500"
+                        className="appearance-none outline-none block w-full border rounded-lg py-2 px-2 leading-tight focus:border-blue-500 focus:ring-blue-500"
                     />
                     {
-                        errors?.type === 'required' && <p className="text-danger-500 text-xs">Ce champ est obligatoire</p>
+                        errors?.type === 'required' && <p className="text-red-500 text-xs">Ce champ est obligatoire</p>
                     }
                 </div>
             )}
