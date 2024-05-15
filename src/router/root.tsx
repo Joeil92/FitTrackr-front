@@ -3,8 +3,9 @@ import Login from "../pages/login/login";
 import Root from "../pages/root/root";
 import Dashboard from "../pages/dashboard/dashboard";
 import Workouts from "../pages/workouts/workouts";
-import NewWorkout from "../pages/workouts/newWorkout/newWorkout";
 import protectedLoader from "./loaders/protectedLoader";
+import NewWorkout from "../pages/workouts/pages/newWorkout/newWorkout";
+import Workout from "../pages/workouts/pages/workout/workout";
 
 const router = createBrowserRouter([
     {
@@ -20,12 +21,16 @@ const router = createBrowserRouter([
                 path: '/workouts',
                 children: [
                     {
-                        path: 'workouts',
+                        path: '/workouts',
                         element: <Workouts />
                     },
                     {
                         path: 'new_workout',
                         element: <NewWorkout />
+                    },
+                    {
+                        path: ':workoutId',
+                        element: <Workout />
                     }
                 ]
             },

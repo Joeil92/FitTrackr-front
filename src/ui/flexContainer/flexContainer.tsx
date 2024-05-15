@@ -9,7 +9,7 @@ interface Props {
     gap?: 0 | 2 | 3 | 6 | 12 | 24 | 48
 }
 
-export default function FlexContainer({ children, direction = "col", justify = "normal", justifyItem = "start", alignItems = "start", gap = 3 }: Props) {
+export default function FlexContainer({ children, direction = "row", justify = "normal", justifyItem = "start", alignItems = "start", gap = 3 }: Props) {
     let className = "flex";
 
     if (direction) {

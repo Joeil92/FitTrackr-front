@@ -20,6 +20,24 @@ export async function addWorkout(inputs: WorkoutInputs): Promise<{message: strin
     return data;
 }
 
+export async function getWorkoutById(workoutId: string): Promise<Workout> {
+    const url = `http://localhost:8000/api/workouts/${workoutId}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'authorization': 'Bearer ' + localStorage.getItem('fitTrackrToken'),
+            'accept': 'application/json'
+        }
+    }
+
+    const res = await fetch(url, options);
+    const data = await res.json();
+
+    if(!res.ok) throw new Error(data.message);
+
+    return data;
+}
+
 export async function getWorkoutsByUser(userId: number): Promise<Workout[]> {
     const url = `http://localhost:8000/api/workouts/users/${userId}`;
     const options = {

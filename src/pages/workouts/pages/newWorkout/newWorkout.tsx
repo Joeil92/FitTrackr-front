@@ -1,4 +1,4 @@
-import LayoutTitle from "../../../ui/layoutTitle/layoutTitle";
+import LayoutTitle from "../../../../ui/layoutTitle/layoutTitle";
 import WorkoutForm from "./form/workoutForm";
 
 export default function NewWorkout() {

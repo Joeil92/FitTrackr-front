@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form"
-import Input from "../../../../components/form/input";
-import Submit from "../../../../components/form/submit";
-import { useMutation } from "react-query";
-import { addWorkout } from "../../../../services/api/workout";
-import { ErrorResponse } from "../../../../shared/types/errorResponse.interface";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { OutletContextProps } from "../../../root/root";
+import { OutletContextProps } from "../../../../root/root";
+import { useForm } from "react-hook-form";
+import { useMutation } from "react-query";
+import { addWorkout } from "../../../../../services/api/workout";
+import { ErrorResponse } from "../../../../../shared/types/errorResponse.interface";
+import Input from "../../../../../components/form/input";
+import Submit from "../../../../../components/form/submit";
 
 interface Props {
 
