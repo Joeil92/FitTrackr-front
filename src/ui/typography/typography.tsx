@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 
 type Tag = "h1" | "h2" | "h3" | "p" | "span"
 
-export interface Props {
+interface Props {
     children: ReactNode
     tag?: Tag
     isCentered?: boolean

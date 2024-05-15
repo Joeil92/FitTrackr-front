@@ -3,8 +3,8 @@ import Input from "../../../components/form/input";
 import Submit from "../../../components/form/submit";
 import { useMutation } from "react-query";
 import { auth } from "../../../services/api/auth";
-import { useContext } from "react";
-import { authContext } from "../../../services/providers/authProvider/authProvider";
+import { AuthProvider } from "../../../services/providers/authProvider/authProvider";
+import { useNavigate } from "react-router-dom";
 
 export interface LoginInputs {
     email: string
@@ -12,18 +12,20 @@ export interface LoginInputs {
 }
 
 export default function LoginForm() {
+    const navigate = useNavigate();
+
     const { handleSubmit, control, formState: { errors } } = useForm<LoginInputs>({
         defaultValues: {
             email: 'admin@mon-organisation.fr',
             password: 'test'
         }
     });
-    const { login } = useContext(authContext);
 
     const mutation = useMutation({
         mutationFn: (inputs: LoginInputs) => auth(inputs),
         onSuccess: (token) => {
-            login(token);
+            AuthProvider.signin(token);
+            navigate('/');
         },
         onError: (data) => {
             console.error(data);

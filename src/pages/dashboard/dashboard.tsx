@@ -1,17 +1,16 @@
 import useDocumentTitle from "../../hooks/useDocumentTitle"
-import { useContext } from "react";
-import { authContext } from "../../services/providers/authProvider/authProvider";
-import Layout from "../../ui/layout/layout";
-import Typography from "../../ui/typography/typography";
+import LayoutTitle from "../../ui/layoutTitle/layoutTitle";
+import { useOutletContext } from "react-router-dom";
+import { OutletContextProps } from "../root/root";
 
 export default function Dashboard() {
     useDocumentTitle('Tableau de bord');
 
-    const { user } = useContext(authContext);
+    const { user } = useOutletContext<OutletContextProps>();
 
     return (
-        <Layout>
-            <Typography tag="h1">👋 Bonjour, {user?.firstname}!</Typography>
-        </Layout>
+        <>
+            <LayoutTitle>👋 Bonjour, {user.firstname}!</LayoutTitle>
+        </>
     )
 }
