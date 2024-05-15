@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/login/login";
 import Root from "../pages/root/root";
 import Dashboard from "../pages/dashboard/dashboard";
+import Workouts from "../pages/workouts/workouts";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Dashboard />
+            },
+            {
+                path: 'workouts',
+                element: <Workouts />
             },
             {
                 path: "login",

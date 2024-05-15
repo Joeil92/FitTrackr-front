@@ -1,7 +1,7 @@
 import useDocumentTitle from "../../hooks/useDocumentTitle"
-import Card from "../../ui/card";
-import Section from "../../ui/section";
-import Typography from "../../ui/typography";
+import Card from "../../ui/card/card";
+import Section from "../../ui/section/section";
+import Typography from "../../ui/typography/typography";
 import LoginForm from "./form/loginForm";
 
 export default function Login() {
