@@ -1,38 +1,23 @@
-import { ReactNode } from "react"
-
+import { CSSProperties, ReactNode } from "react"
 interface Props {
     children: ReactNode
-    direction?: "row" | "row-reverse" | "col" | "col-reverse"
-    justify?: "normal" | "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch"
+    justify?: "normal" | "start" | "end" | "center" | "space-between" | "space-around" | "space-evenly" | "stretch"
     justifyItem?: "start" | "end" | "center" | "stretch"
     alignItems?: "start" | "end" | "center" | "baseline" | "stretch"
     gap?: 0 | 2 | 3 | 6 | 12 | 24 | 48
+    className?: string
 }
 
-export default function FlexContainer({ children, direction = "row", justify = "normal", justifyItem = "start", alignItems = "start", gap = 3 }: Props) {
-    let className = "flex";
-
-    if (direction) {
-        className = className + ` flex-${direction}`;
-    }
-
-    if (justify) {
-        className = className + ` justify-${justify}`;
-    }
-
-    if (justifyItem) {
-        className = className + ` justify-items-${justifyItem}`
-    }
-
-    if (alignItems) {
-        className = className + ` items-${alignItems}`;
-    }
-
-    if (gap) {
-        className = className + ` gap-${gap}`
+export default function FlexContainer({ children, justify = "start", alignItems = "center", justifyItem = "start", gap = 3, className = "" }: Props) {
+    const style: CSSProperties = {
+        display: "flex",
+        justifyContent: justify,
+        justifyItems: justifyItem,
+        alignItems: alignItems,
+        gap: gap
     }
 
     return (
-        <div className={className}>{children}</div>
+        <div className={className} style={style}>{children}</div>
     )
 }

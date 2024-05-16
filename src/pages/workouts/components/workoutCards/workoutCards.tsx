@@ -12,10 +12,10 @@ interface Props {
 
 export default function WorkoutCards({ workouts }: Props) {
     return (
-        <GridContainer cols={4} gap={6}>
+        <GridContainer cols={4} gap={12}>
             {workouts.map(workout => (
                 <Card key={workout.id}>
-                    <FlexContainer justify="between" alignItems="center">
+                    <FlexContainer justify="space-between" alignItems="center">
                         <Link href={`/workouts/${workout.id}`}>{workout.name}</Link>
                         <Typography tag="span">{format(workout.createdAt, "dd/MM")}</Typography>
                     </FlexContainer>
