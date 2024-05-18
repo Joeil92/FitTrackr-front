@@ -11,10 +11,11 @@ type Type = 'primary' |
 
 interface Props {
     children: ReactNode
+    onClick: () => void
     type?: Type
 }
 
-export default function Button({ children, type = "primary" }: Props) {
+export default function Button({ children, onClick, type = "primary" }: Props) {
     let className = ""
 
     if (type === "primary") {
@@ -22,6 +23,6 @@ export default function Button({ children, type = "primary" }: Props) {
     }
 
     return (
-        <button className={className}>{children}</button>
+        <button className={className} onClick={onClick}>{children}</button>
     )
 }

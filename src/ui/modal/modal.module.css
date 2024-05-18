@@ -1,0 +1,29 @@
+.modal {
+	animation: opacity 0.5s ease 0s 1 normal forwards;
+}
+
+.modal > div {
+    animation: entrance 0.5s ease 0s 1 normal forwards;
+}
+
+@keyframes entrance {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes opacity {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
